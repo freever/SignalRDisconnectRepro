@@ -13,7 +13,6 @@ namespace SignalRDisconnectRepro.Droid
     [Application]
     public class MainApplication : Application, Application.IActivityLifecycleCallbacks
     {
-        private HubConnection Connection;
 
         public MainApplication(IntPtr handle, JniHandleOwnership transer)
             :base(handle, transer)
@@ -28,11 +27,7 @@ namespace SignalRDisconnectRepro.Droid
         public override void OnCreate()
         {
             
-            Connection = new HubConnectionBuilder()
-                .WithUrl("https://s1.blauhaustechnology.com:5201/")
-                .ConfigureLogging(x => x.SetMinimumLevel(LogLevel.Debug))
-                .AddMessagePackProtocol()
-                .Build();
+
 
 
             base.OnCreate();
@@ -63,7 +58,15 @@ namespace SignalRDisconnectRepro.Droid
 
         public async void OnActivityResumed(Activity activity)
         {
-            await Connection.StartAsync();
+            try
+            {
+                await Connection.StartAsync();
+            }
+            catch(Exception eee)
+            {
+
+            }
+
             CrossCurrentActivity.Current.Activity = activity;
         }
 

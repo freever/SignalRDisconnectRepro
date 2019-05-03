@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
@@ -112,7 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SignalRDisconnectRepro\SignalRDisconnectRepro.csproj">
-      <Project>{B68185E6-54F3-4EEF-934F-AAB7D22E16D2}</Project>
+      <Project>{39D72C33-5446-438F-8BF1-C3BE0E18D07F}</Project>
       <Name>SignalRDisconnectRepro</Name>
     </ProjectReference>
   </ItemGroup>
