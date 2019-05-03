@@ -5,6 +5,8 @@ using Android.OS;
 using Android.Runtime;
 using Plugin.CurrentActivity;
 using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace SignalRDisconnectRepro.Droid
 {
@@ -28,6 +30,8 @@ namespace SignalRDisconnectRepro.Droid
             
             Connection = new HubConnectionBuilder()
                 .WithUrl("https://s1.blauhaustechnology.com:5201/")
+                .ConfigureLogging(x => x.SetMinimumLevel(LogLevel.Debug))
+                .AddMessagePackProtocol()
                 .Build();
 
 
@@ -43,7 +47,7 @@ namespace SignalRDisconnectRepro.Droid
             UnregisterActivityLifecycleCallbacks(this);
         }
 
-        public async void OnActivityCreated(Activity activity, Bundle savedInstanceState)
+        public void OnActivityCreated(Activity activity, Bundle savedInstanceState)
         {
             CrossCurrentActivity.Current.Activity = activity;
         }
