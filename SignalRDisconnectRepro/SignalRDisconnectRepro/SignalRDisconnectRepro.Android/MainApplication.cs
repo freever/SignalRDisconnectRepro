@@ -26,14 +26,9 @@ namespace SignalRDisconnectRepro.Droid
         
         public override void OnCreate()
         {
-            
-
-
-
             base.OnCreate();
             RegisterActivityLifecycleCallbacks(this);
             CrossCurrentActivity.Current.Init(this);
-
         }
 
         public override void OnTerminate()
@@ -51,22 +46,12 @@ namespace SignalRDisconnectRepro.Droid
         {
         }
 
-        public async void OnActivityPaused(Activity activity)
+        public void OnActivityPaused(Activity activity)
         {
-            await Connection.StopAsync();
         }
 
-        public async void OnActivityResumed(Activity activity)
+        public void OnActivityResumed(Activity activity)
         {
-            try
-            {
-                await Connection.StartAsync();
-            }
-            catch(Exception eee)
-            {
-
-            }
-
             CrossCurrentActivity.Current.Activity = activity;
         }
 

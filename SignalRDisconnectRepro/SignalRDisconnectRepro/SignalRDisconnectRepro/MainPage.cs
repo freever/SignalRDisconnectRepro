@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Xamarin.Forms;
 
@@ -26,13 +27,15 @@ namespace SignalRDisconnectRepro
             {
                 Text = "CONNECT"
             };
-            connect.Clicked += (sender, e) => 
+            connect.Clicked += async (sender, e) => 
             {
-                Connection.ConnectAsync();
+                await Connection.StartAsync();
             };
 
             Content = new StackLayout
             {
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
                 Children =
                 {
                     connect
